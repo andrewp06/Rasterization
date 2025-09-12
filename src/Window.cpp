@@ -1,6 +1,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
+#define GL_SILENCE_DEPRECATION
+
 #define START_HEIGHT 600
 #define START_WIDTH 800
 
