@@ -1,5 +1,5 @@
-#include "3DVector.cpp"
-#include "Window.cpp"
+#include "3DVector.h"
+#include "Window.h"
 #include <iostream>
 
 int main(){

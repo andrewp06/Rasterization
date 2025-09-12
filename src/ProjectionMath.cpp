@@ -1,5 +1,5 @@
-#include "3DVector.cpp"
-#include "2DVector.cpp"
+#include "3DVector.h"
+#include "2DVector.h"
 #include <cmath>
 #include <iostream>
 using namespace std;
@@ -46,13 +46,17 @@ Vector2 solveForB(Vector3 d, Vector3 e){
     return b;
 }
 
-int main(){
-    Vector3 c = {0, 0, 0};
-    Vector3 a = {0, 0, 10};
-    Vector3 e = {0,0,5};
-    Vector3 theta = {M_PI/4, 0, 0};
-    Vector3 d = solveForD(a, c, theta);
-    d.printVector();
-    Vector2 result = solveForB(d, e);
-    result.printVector();
+Vector2 solve2DProjection(Vector3 a, Vector3 c, Vector3 theta, Vector3 e){
+    return solveForB(solveForD(a, c, theta), e);
 }
+
+// int main(){
+//     Vector3 c = {0, 0, 0};
+//     Vector3 a = {0, 0, 10};
+//     Vector3 e = {0,0,5};
+//     Vector3 theta = {M_PI/4, 0, 0};
+//     Vector3 d = solveForD(a, c, theta);
+//     d.printVector();
+//     Vector2 result = solveForB(d, e);
+//     result.printVector();
+// }
