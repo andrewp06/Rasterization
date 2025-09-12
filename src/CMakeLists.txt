@@ -4,7 +4,7 @@ project(Rasterization)
 # Find GLFW package
 find_package(glfw3 CONFIG REQUIRED)
 
-add_executable(WindowTest MACOSX_BUNDLE Window.cpp)
+add_executable(Main MACOSX_BUNDLE Main.cpp)
 
 # Link GLFW to your executable
 target_link_libraries(WindowTest glfw)

@@ -1,11 +1,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "Window.h"
 
-
-#define GL_SILENCE_DEPRECATION
-
-#define START_HEIGHT 600
-#define START_WIDTH 800
 
 void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b, std::vector<unsigned char>& framebuffer, int width){
     int index = (y * width + x) * 3;
@@ -20,14 +16,12 @@ void drawGradient(std::vector<unsigned char>& framebuffer, int width, int height
             unsigned char r = (i*255)/height;
             unsigned char g = (j*255)/width;
 
-            setPixel(j, height - 1 - i, r, g, 0, framebuffer, width);
+            setPixel(j, i, r, g, 0, framebuffer, width);
         }
     }
 }
 
-
-int main() {
-
+int display(){
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;
@@ -42,6 +36,8 @@ int main() {
     std::vector<unsigned char> framebuffer(START_WIDTH * START_HEIGHT * 3);
     drawGradient(framebuffer,START_WIDTH, START_HEIGHT);
     int windowWidth, windowHeight;
+
+    glfwSetWindowAspectRatio(window, ASPECT_RATIO_WIDTH, ASPECT_RATIO_HEIGHT);
 
     while (!glfwWindowShouldClose(window)) {
         
@@ -60,3 +56,4 @@ int main() {
     glfwTerminate();
     return 0;
 }
+
