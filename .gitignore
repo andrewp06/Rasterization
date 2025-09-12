@@ -58,7 +58,7 @@ bld/
 # Add this line
 out/
 
-test_build/
+build/
 
 *.dSYM
 
