@@ -62,5 +62,6 @@ test_build/
 
 *.dSYM
 
+# Executables without extension
 Window
 HelloWorld
