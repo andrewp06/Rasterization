@@ -1,7 +1,18 @@
 #include "3DVector.h"
 #include <iostream>
+#include <cmath>
 
 struct Vector3;
+
+void Vector3::roundTiny(double eps) {
+    if (std::abs(x) < eps) x = 0.0;
+    if (std::abs(y) < eps) y = 0.0;
+
+}
+
+void Vector3::printVector(){
+    std::cout << "(" << x << "," << y << "," << z << ")\n";
+}
 
 Vector3 vector3Addition(Vector3 a, Vector3 b){
     Vector3 result;
@@ -23,11 +34,4 @@ Vector3 vector3Subtraction(Vector3 a, Vector3 b){
     return vector3Addition(a, vector3ScalarMult(b, -1));
 }
 
-void printVector3(Vector3 a){
-    std::cout << "\nx = ";
-    std::cout << a.x;
-    std::cout << "\ny = ";
-    std::cout << a.y;
-    std::cout << "\nz = ";
-    std::cout << a.z;
-}
+
