@@ -1,15 +1,18 @@
 #pragma once
 #include "3DVector.h"
 #include "2DVector.h"
+#include "Color.h"
 #include <iostream>
 
 struct Triangle3D {
     Vector3 p, q, r;
+    Color color;
     void printTriangle();
 };
 
 struct Triangle2D {
     Vector2 p, q, r;
+    Color color;
     void printTriangle();
     bool pointInTriangle(Vector2 point);
 };

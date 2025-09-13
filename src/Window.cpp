@@ -3,6 +3,7 @@
 #include "Window.h"
 
 
+
 void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b, std::vector<unsigned char>& framebuffer, int width){
     int index = (y * width + x) * 3;
     framebuffer[index] = r;
@@ -20,6 +21,8 @@ void drawGradient(std::vector<unsigned char>& framebuffer, int width, int height
         }
     }
 }
+
+
 
 int display(){
     if (!glfwInit()) {
