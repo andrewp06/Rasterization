@@ -25,13 +25,36 @@ Triangle2D project3DTriangle(Triangle3D triangle3, Vector3 c, Vector3 theta, Vec
     return triangle2;
 }
 
+bool Triangle2D::pointInTriangle(Vector2 point){
+
+    Vector2 v0 = vector2Subtraction(r, p);
+    Vector2 v1 = vector2Subtraction(q, p);
+    Vector2 v2 = vector2Subtraction(point, p);
+
+    double dot00 = dotProduct2(v0,v0);
+    double dot01 = dotProduct2(v0,v1);
+    double dot02 = dotProduct2(v0,v2);
+    double dot11 = dotProduct2(v1,v1);
+    double dot12 = dotProduct2(v1,v2);
+
+    double invDenom = 1 / ((dot00 * dot11) - (dot01 * dot01));
+
+    double u = ((dot11 * dot02) - (dot01 * dot12)) * invDenom;
+    double v = ((dot00 * dot12) - (dot01 * dot02)) * invDenom;
+
+    bool result = u >= 0;
+    result &= v >= 0;
+    result &= (v + u) <=1;
+
+    return result;    
+}
+
 
 int main(){
-    Triangle3D triangle3 = {{1,1,5}, {-1, 1, 5}, {0, -1, 5}};
-    triangle3.printTriangle();
-    Vector3 c = {0, 0, 0};
-    Vector3 e = {0,0,5};
-    Vector3 theta = {0, 0, 0};
-    Triangle2D triangle2 = project3DTriangle(triangle3, c, theta, e);
-    triangle2.printTriangle();
+    Triangle2D triangle2 = {{0, 0}, {4, 0}, {0, 3}};
+    std::cout << "inside: " << triangle2.pointInTriangle({1, 1});
+    std::cout << "\noutside: " << triangle2.pointInTriangle({2, 2});
+    std::cout << "\nOutside: " << triangle2.pointInTriangle({4, 3});
+    std::cout << "\nVertex: " << triangle2.pointInTriangle({0, 0});
+    std::cout << "\nEdge: " << triangle2.pointInTriangle({2, 0});
 }

@@ -35,3 +35,9 @@ Vector2 vector2ScalarMult(Vector2 a, double scalar){
 Vector2 vector2Subtraction(Vector2 a, Vector2 b){
     return vector2Addition(a, vector2ScalarMult(b, -1));
 }
+
+double dotProduct2(Vector2 a, Vector2 b){
+    double result = a.x * b.x;
+    result += a.y * b.y;
+    return result;
+}
