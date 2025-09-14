@@ -33,8 +33,6 @@ void Scene::drawScene(std::vector<unsigned char>& framebuffer, int width, int he
 
                 if (projection.pointInTriangle({xCordImagePane, yCordImagePane})){
                     setPixel(j, i, projection.color.r, projection.color.g, projection.color.b, framebuffer, width);
-                } else {
-                    setPixel(j, i, BACKGROUND_COLOR.r, BACKGROUND_COLOR.g, BACKGROUND_COLOR.b, framebuffer, width);
                 }
             }
         }
