@@ -1,4 +1,4 @@
-
+#pragma once
 
 Vector3 solveForD(Vector3 a, Vector3 c, Vector3 theta);
 

@@ -1,14 +1,9 @@
 #pragma once
+
 #include "3DVector.h"
 #include "2DVector.h"
 #include "Color.h"
 #include <iostream>
-
-struct Triangle3D {
-    Vector3 p, q, r;
-    Color color;
-    void printTriangle();
-};
 
 struct Triangle2D {
     Vector2 p, q, r;
@@ -17,4 +12,9 @@ struct Triangle2D {
     bool pointInTriangle(Vector2 point);
 };
 
-Triangle2D project3DTriangle(Triangle3D triangle, Vector3 c, Vector3 theta, Vector3 e);
+struct Triangle3D {
+    Vector3 p, q, r;
+    Color color;
+    void printTriangle();
+    Triangle2D project3DTriangle(Vector3 c, Vector3 theta, Vector3 e);
+};

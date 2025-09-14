@@ -23,8 +23,26 @@ void drawGradient(std::vector<unsigned char>& framebuffer, int width, int height
 }
 
 
+void Scene::drawScene(std::vector<unsigned char>& framebuffer, int width, int height){
+    for (auto& triangle : triangles) {
+        Triangle2D projection = triangle.project3DTriangle(camera, cameraAngle, focalLength);
+        for( int i = 0; i < height; i++){  
+            for( int j = 0; j < width; j++){
+                double xCordImagePane = ((static_cast<double>(j) / width) * 2 * X_MAX) + X_MIN;
+                double yCordImagePane = ((static_cast<double>(i) / height) * 2 * Y_MAX) + Y_MIN;
 
-int display(){
+                if (projection.pointInTriangle({xCordImagePane, yCordImagePane})){
+                    setPixel(j, i, projection.color.r, projection.color.g, projection.color.b, framebuffer, width);
+                } else {
+                    setPixel(j, i, BACKGROUND_COLOR.r, BACKGROUND_COLOR.g, BACKGROUND_COLOR.b, framebuffer, width);
+                }
+            }
+        }
+    }
+}
+
+
+int Scene::display(){
     if (!glfwInit()) {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;
@@ -47,7 +65,7 @@ int display(){
         glfwGetFramebufferSize(window, &windowWidth, &windowHeight);
 
         std::vector<unsigned char> framebuffer(windowWidth * windowHeight * 3);
-        drawGradient(framebuffer,windowWidth, windowHeight);
+        drawScene(framebuffer, windowWidth, windowHeight);
 
 
         // Render here

@@ -1,24 +1,12 @@
-#include "3DVector.h"
 #include "Window.h"
 #include <iostream>
 
 int main(){
 
-    Vector3 a = {1,1,1};
-    Vector3 b = {1,2,3};
-    double scalar = 2.0;
-
-    Vector3 result = vector3Addition(a, b);
-
-    printVector3(result);
-
-    result = vector3Subtraction(a, b);
-
-    printVector3(result);
-
-    result = vector3ScalarMult(b,scalar);
-
-    printVector3(result);
-
-    // return display();
+    Scene scene;
+    scene.triangles = {{{0,0,10}, {0,2,10}, {-5, 5, 10}, {255, 0, 0}}};
+    scene.camera = {0,0,0};
+    scene.cameraAngle = {0,0,0};
+    scene.focalLength = {0,0,5};
+    scene.display();
 }
