@@ -1,6 +1,7 @@
 #include "Triangle.h"
 #include "ProjectionMath.h"
 #include <iostream>
+#include <cmath>
 
 void Triangle3D::printTriangle() {
     std::cout << "\n3D Triangle\n";
@@ -49,4 +50,19 @@ bool Triangle2D::pointInTriangle(Vector2 point){
 
     return result;    
 }
+
+Vector2 Triangle2D::maxXY(){
+    Vector2 maxValues;
+    maxValues.x = fmax(r.x, fmax(p.x, q.x));
+    maxValues.y = fmax(r.y, fmax(p.y, q.y));
+    return maxValues;
+}
+
+Vector2 Triangle2D::minXY(){
+    Vector2 minValues;
+    minValues.x = fmin(r.x, fmin(p.x, q.x));
+    minValues.y = fmin(r.y, fmin(p.y, q.y));
+    return minValues;
+}
+
 

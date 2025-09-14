@@ -10,6 +10,8 @@ struct Triangle2D {
     Color color;
     void printTriangle();
     bool pointInTriangle(Vector2 point);
+    Vector2 maxXY();
+    Vector2 minXY();
 };
 
 struct Triangle3D {
